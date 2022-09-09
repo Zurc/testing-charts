@@ -1,0 +1,42 @@
+<kendo-chart
+  #chart
+  [title]="chartTitle"
+  [seriesColors]="['#777777', '#044c7e', '#ce122d']"
+  [categoryAxis]="categoryAxis"
+  [valueAxis]="valueAxis"
+  >
+  <kendo-chart-legend
+        [visible]="true"
+        position="custom"
+        [offsetX]="legendXPosition"
+        [offsetY]="0"
+      >
+      </kendo-chart-legend>
+  <kendo-chart-series>
+    <kendo-chart-series-item
+      name="Total working hours"
+      [data]="computedUsage"
+      type="line"
+      [style]="'step'"
+      dashType="dash"
+      [markers]="{visible: false}"
+      field="workingHoursTotalInMinutes">
+    </kendo-chart-series-item>
+    <kendo-chart-series-item
+      name="Inside working hours"
+      [data]="computedUsage"
+      type="column"
+      field="insideHoursUsage">
+      <kendo-chart-tooltip
+            [format]="getInsideFormat()"
+          ></kendo-chart-tooltip
+          >
+    </kendo-chart-series-item>
+    <kendo-chart-series-item
+      name="Outside working hours"
+      [data]="computedUsage"
+      type="column"
+      field="outsideHoursUsage">
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>
